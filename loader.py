@@ -17,6 +17,6 @@ def load_all_pdfs(folder):
             text = load_pdf(path)
             results.append({"source": filename, "text": text})
     return results
-
-for doc in load_all_pdfs("docs"):
-    print(doc["source"], len(doc["text"]    ))
+if __name__=="__main__":
+    for doc in load_all_pdfs("docs"):
+        print(doc["source"], len(doc["text"]))

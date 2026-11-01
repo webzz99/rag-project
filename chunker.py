@@ -1,3 +1,4 @@
+from loader import load_pdf
 def chunk_text(text, chunk_size, overlap):
 
     chunks = []
@@ -8,6 +9,8 @@ def chunk_text(text, chunk_size, overlap):
         start = end - overlap
     return chunks
 
-print(chunk_text("abcdefghijklmnopqrstuvwxyz", 10, 3))
-    
-    
+if __name__ == "__main__":
+    text = load_pdf("docs/ai-regulation.pdf")
+    chunks = chunk_text(text, 2000, 200)
+    print(len(chunks))
+    print(chunks[10])
