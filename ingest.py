@@ -12,7 +12,7 @@ collection = client.get_or_create_collection("documents")
 if __name__ == "__main__":
      docs = load_all_pdfs("docs")
      for doc in docs:
-         chunks = chunk_text(doc["text"], 2000, 200)
+         chunks = chunk_text(doc["text"], 800, 150)
          vectors = model.encode(chunks).tolist()
          ids = []
          metadatas =[]
