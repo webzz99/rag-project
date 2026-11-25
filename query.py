@@ -1,13 +1,13 @@
 import chromadb
 from sentence_transformers import SentenceTransformer
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+model = SentenceTransformer("BAAI/bge-small-en-v1.5")
 client = chromadb.PersistentClient(path="chroma_db")
 collection = client.get_or_create_collection("documents")
 
 
 def retrieve(question, n_results):
-    vector = model.encode(question).tolist()
+    vector = model.encode("Represent this sentence for searching relevant passages: " + question).tolist()
     results = collection.query(query_embeddings=[vector], n_results=n_results)
     return results
 
